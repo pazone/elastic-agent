@@ -42,7 +42,7 @@ actions:
         - backport-skip
         - skip-changelog
       title: '[{{ requiredEnv "BRANCH_NAME" }}][Automation] Bump .stable-snapshot-version version to {{ source "lastStableStackSnapshot" }}'
-      description: |
+      description: |-
         ### What does this PR do
         Updates `.stable-snapshot-version`. 
         It is used to pin stable stack version for integration tests.
