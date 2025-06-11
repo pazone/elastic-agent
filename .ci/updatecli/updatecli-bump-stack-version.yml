@@ -28,8 +28,8 @@ targets:
     scmid: githubConfig
     kind: yaml
     spec:
-      file: "pkg/testing/ess/create_deployment_csp_configuration.yaml"
-      key: "$.docker.integration_server_image"
+      file: pkg/testing/ess/create_deployment_csp_configuration.yaml
+      key: docker.integration_server_image
       value: "docker.elastic.co/cloud-release/elastic-agent-cloud:{{ source `lastStableStackSnapshot` }}-SNAPSHOT"
   updateElasticsearchImage:
     name: "Update elasticsearch_image"
@@ -37,8 +37,8 @@ targets:
     scmid: githubConfig
     kind: yaml
     spec:
-      file: "pkg/testing/ess/create_deployment_csp_configuration.yaml"
-      key: "$.docker.elasticsearch_image"
+      file: pkg/testing/ess/create_deployment_csp_configuration.yaml
+      key: docker.elasticsearch_image
       value: "docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ source `lastStableStackSnapshot` }}-SNAPSHOT"
   updateKibanaImage:
     name: "Update kibana_image"
@@ -46,9 +46,9 @@ targets:
     scmid: githubConfig
     kind: yaml
     spec:
-      file: "pkg/testing/ess/create_deployment_csp_configuration.yaml"
-      key: "$.docker.kibana_image"
-      value: "docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ source `lastStableStackSnapshot` }}-SNAPSHOT"
+      file: pkg/testing/ess/create_deployment_csp_configuration.yaml
+      key: docker.kibana_image
+      value: "docker.elastic.co/cloud-release/kibana-cloud:{{ source `lastStableStackSnapshot` }}-SNAPSHOT"
 actions:
   elastic-agent:
     kind: github/pullrequest
