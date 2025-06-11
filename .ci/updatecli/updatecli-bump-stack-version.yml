@@ -22,33 +22,15 @@ sources:
       file: 'https://storage.googleapis.com/artifacts-api/channels/{{ requiredEnv "BRANCH_NAME" }}.json'
       key: "build"
 targets:
-  updateIntegrationServerImage:
+  updateStackImages:
     name: "Update integration_server_image"
     sourceid: lastStableStackSnapshot
     scmid: githubConfig
-    kind: yaml
+    kind: file
     spec:
       file: "pkg/testing/ess/create_deployment_csp_configuration.yaml"
-      key: "$.docker.integration_server_image"
-      value: '"docker.elastic.co/cloud-release/elastic-agent-cloud:{{ source `lastStableStackSnapshot` }}-SNAPSHOT"'
-  updateElasticsearchImage:
-    name: "Update elasticsearch_image"
-    sourceid: lastStableStackSnapshot
-    scmid: githubConfig
-    kind: yaml
-    spec:
-      file: "pkg/testing/ess/create_deployment_csp_configuration.yaml"
-      key: "$.docker.elasticsearch_image"
-      value: '"docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ source `lastStableStackSnapshot` }}-SNAPSHOT"'
-  updateKibanaImage:
-    name: "Update kibana_image"
-    sourceid: lastStableStackSnapshot
-    scmid: githubConfig
-    kind: yaml
-    spec:
-      file: "pkg/testing/ess/create_deployment_csp_configuration.yaml"
-      key: "$.docker.kibana_image"
-      value: '"docker.elastic.co/cloud-release/elasticsearch-cloud-ess:{{ source `lastStableStackSnapshot` }}-SNAPSHOT"'
+      matchpattern: '(\S*_image: ".*docker.*:)(.+)"'
+      replacepattern: '$1:{{ source "lastStableStackSnapshot" }}-SNAPSHOT"'
 actions:
   elastic-agent:
     kind: github/pullrequest
