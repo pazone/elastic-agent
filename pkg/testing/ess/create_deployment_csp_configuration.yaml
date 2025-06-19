@@ -14,6 +14,6 @@ aws:
   elasticsearch_deployment_template_id: "aws-storage-optimized"
   kibana_instance_configuration_id: "aws.kibana.c5d"
 docker:
-  integration_server_image: "docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.3-b76cb169-SNAPSHOT"
-  elasticsearch_image: "docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.3-b76cb169-SNAPSHOT"
-  kibana_image: "docker.elastic.co/cloud-release/kibana-cloud:9.0.3-b76cb169-SNAPSHOT"
+  integration_server_image: "docker.elastic.co/cloud-release/elastic-agent-cloud:9.0.3-9df8b4e0-SNAPSHOT"
+  elasticsearch_image: "docker.elastic.co/cloud-release/elasticsearch-cloud-ess:9.0.3-9df8b4e0-SNAPSHOT"
+  kibana_image: "docker.elastic.co/cloud-release/kibana-cloud:9.0.3-9df8b4e0-SNAPSHOT"
